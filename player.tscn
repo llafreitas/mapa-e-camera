@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://dmgeajcbvbsic"]
+
+[ext_resource type="Script" uid="uid://cvluwmrgo71bg" path="res://scripts/persona.gd" id="1_pmvhq"]
+[ext_resource type="Texture2D" uid="uid://cpo1v7xr4fokk" path="res://Recursos/tilemap_packed.png" id="2_iersn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5p0qj"]
+atlas = ExtResource("2_iersn")
+region = Rect2(256, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yuqgu"]
+atlas = ExtResource("2_iersn")
+region = Rect2(272, 96, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wreb2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5p0qj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yuqgu")
+}],
+"loop": 1,
+"name": &"anda",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"new_animation",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5p0qj")
+}],
+"loop": 1,
+"name": &"parado",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ytnb3"]
+size = Vector2(13, 14)
+
+[node name="PERSONA" type="Node2D" unique_id=558145427]
+
+[node name="persona" type="CharacterBody2D" parent="." unique_id=1755877336]
+script = ExtResource("1_pmvhq")
+
+[node name="anima" type="AnimatedSprite2D" parent="persona" unique_id=1791484122]
+sprite_frames = SubResource("SpriteFrames_wreb2")
+animation = &"new_animation"
+
+[node name="collision" type="CollisionShape2D" parent="persona" unique_id=1706834206]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_ytnb3")
+
+[node name="camera" type="Camera2D" parent="persona" unique_id=2048259619]
+zoom = Vector2(2, 2)
+limit_left = 0
+limit_top = 0
+limit_right = 600
+limit_bottom = 300
+position_smoothing_enabled = true
